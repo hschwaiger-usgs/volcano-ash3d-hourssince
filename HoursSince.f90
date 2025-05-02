@@ -57,13 +57,11 @@
 !
 !##############################################################################
 
-      function HS_IsLeapYear(iyear)
+      logical function HS_IsLeapYear(iyear)
 
       implicit none
 
       integer,intent(in)  :: iyear
-
-      logical :: HS_IsLeapYear
 
       ! Note, this uses the proleptic Gregorian calendar which includes year 0
       ! and considers y=0 to be a leap year.
@@ -87,7 +85,7 @@
 !
 !##############################################################################
 
-      function HS_hours_since_baseyear(iyear,imonth,iday,hours,byear,useLeaps)
+      real(kind=8) function HS_hours_since_baseyear(iyear,imonth,iday,hours,byear,useLeaps)
 
       ! This module requires Fortran 2003 or later
       use iso_fortran_env, only : &
@@ -102,11 +100,10 @@
       integer     ,intent(in) :: byear
       logical     ,intent(in) :: useLeaps
 
-      real(kind=8)             :: HS_hours_since_baseyear
-                                   !cumulative hours in each month
+                                  ! cumulative hours in each month
+      integer, dimension(0:12) :: monthours     = (/0,744,1416,2160,2880,3624,4344,5088,5832,6552,7296,8016,8760/)
       integer                  :: i
       integer                  :: ileaphours
-      integer, dimension(0:12) :: monthours     = (/0,744,1416,2160,2880,3624,4344,5088,5832,6552,7296,8016,8760/)
       logical                  :: IsLeap
 
       INTERFACE
@@ -395,7 +392,7 @@
 !
 !##############################################################################
 
-      function HS_xmltime(HoursSince,byear,useLeaps)
+      character (len=20) function HS_xmltime(HoursSince,byear,useLeaps)
 
       ! This module requires Fortran 2003 or later
       use iso_fortran_env, only : &
@@ -406,8 +403,6 @@
       real(kind=8)      ,intent(in) :: HoursSince
       integer           ,intent(in) :: byear
       logical           ,intent(in) :: useLeaps
-
-      character (len=20) :: HS_xmltime
 
       character (len=20) :: string1
       integer            :: iyear, imonth, iday, idoy
@@ -461,7 +456,7 @@
 !
 !##############################################################################
 
-      function HS_yyyymmddhhmm_since(HoursSince,byear,useLeaps)
+      character (len=13) function HS_yyyymmddhhmm_since(HoursSince,byear,useLeaps)
 
       ! This module requires Fortran 2003 or later
       use iso_fortran_env, only : &
@@ -472,8 +467,6 @@
       real(kind=8)   ,intent(in) ::  HoursSince
       integer        ,intent(in) ::  byear
       logical        ,intent(in) ::  useLeaps
-
-      character (len=13)         ::  HS_yyyymmddhhmm_since
 
       character (len=1)          ::  string0                        ! a filler character
       character (len=13)         ::  string1
@@ -528,7 +521,7 @@
 !
 !##############################################################################
 
-      function HS_yyyymmddhh_since(HoursSince,byear,useLeaps)
+      character (len=13) function HS_yyyymmddhh_since(HoursSince,byear,useLeaps)
 
       ! This module requires Fortran 2003 or later
       use iso_fortran_env, only : &
@@ -539,8 +532,6 @@
       real(kind=8),intent(in)    ::  HoursSince
       integer     ,intent(in)    ::  byear
       logical     ,intent(in)    ::  useLeaps
-
-      character (len=13)         ::  HS_yyyymmddhh_since
 
       integer                    ::  iyear, imonth, iday, idoy
       real(kind=8)               ::  hours
@@ -604,7 +595,7 @@
 !
 !##############################################################################
 
-      function HS_DayOfYear(HoursSince,byear,useLeaps)
+      integer function HS_DayOfYear(HoursSince,byear,useLeaps)
 
       ! This module requires Fortran 2003 or later
       use iso_fortran_env, only : &
@@ -615,8 +606,6 @@
       real(kind=8),intent(in) :: HoursSince
       integer     ,intent(in) :: byear
       logical     ,intent(in) :: useLeaps
-
-      integer                 :: HS_DayOfYear
 
       integer               ::  iyear, imonth, iday, idoy
       real(kind=8)          ::  hours
@@ -660,7 +649,7 @@
 !
 !##############################################################################
 
-      function HS_HourOfDay(HoursSince,byear,useLeaps)
+      real(kind=8) function HS_HourOfDay(HoursSince,byear,useLeaps)
 
       ! This module requires Fortran 2003 or later
       use iso_fortran_env, only : &
@@ -671,8 +660,6 @@
       real(kind=8),intent(in) :: HoursSince
       integer     ,intent(in) :: byear
       logical     ,intent(in) :: useLeaps
-
-      real(kind=8)            :: HS_HourOfDay
 
       integer               ::  iyear, imonth, iday, idoy
       real(kind=8)          ::  hours
@@ -716,7 +703,7 @@
 !
 !##############################################################################
 
-      function HS_YearOfEvent(HoursSince,byear,useLeaps)
+      integer function HS_YearOfEvent(HoursSince,byear,useLeaps)
 
       ! This module requires Fortran 2003 or later
       use iso_fortran_env, only : &
@@ -727,8 +714,6 @@
       real(kind=8),intent(in) :: HoursSince
       integer     ,intent(in) :: byear
       logical     ,intent(in) :: useLeaps
-
-      integer                 :: HS_YearOfEvent
 
       integer               ::  iyear, imonth, iday, idoy
       real(kind=8)          ::  hours
@@ -772,7 +757,7 @@
 !
 !##############################################################################
 
-      function HS_MonthOfEvent(HoursSince,byear,useLeaps)
+      integer function HS_MonthOfEvent(HoursSince,byear,useLeaps)
 
       ! This module requires Fortran 2003 or later
       use iso_fortran_env, only : &
@@ -783,8 +768,6 @@
       real(kind=8),intent(in) :: HoursSince
       integer     ,intent(in) :: byear
       logical     ,intent(in) :: useLeaps
-
-      integer                 :: HS_MonthOfEvent
 
       integer               ::  iyear, imonth, iday, idoy
       real(kind=8)          ::  hours
@@ -828,7 +811,7 @@
 !
 !##############################################################################
 
-      function HS_DayOfEvent(HoursSince,byear,useLeaps)
+      integer function HS_DayOfEvent(HoursSince,byear,useLeaps)
 
       ! This module requires Fortran 2003 or later
       use iso_fortran_env, only : &
@@ -839,8 +822,6 @@
       real(kind=8),intent(in) :: HoursSince
       integer     ,intent(in) :: byear
       logical     ,intent(in) :: useLeaps
-
-      integer                 :: HS_DayOfEvent
 
       integer               ::  iyear, imonth, iday, idoy
       real(kind=8)          ::  hours
@@ -874,3 +855,5 @@
       return
 
       end function HS_DayOfEvent
+
+!##############################################################################
