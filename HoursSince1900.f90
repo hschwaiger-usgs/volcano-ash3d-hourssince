@@ -5,14 +5,14 @@
 !      Larry G. Mastin (lgmastin@usgs.gov), and Roger P. Denlinger (roger@usgs.gov).
 !
 !      The model and its source code are products of the U.S. Federal Government and therefore
-!      bear no copyright.  They may be copied, redistributed and freely incorporated 
+!      bear no copyright.  They may be copied, redistributed and freely incorporated
 !      into derivative products.  However as a matter of scientific courtesy we ask that
 !      you credit the authors and cite published documentation of this model (below) when
 !      publishing or distributing derivative products.
 !
 !      Schwaiger, H.F., Denlinger, R.P., and Mastin, L.G., 2012, Ash3d, a finite-
 !         volume, conservative numerical model for ash transport and tephra deposition,
-!         Journal of Geophysical Research, 117, B04204, doi:10.1029/2011JB008968. 
+!         Journal of Geophysical Research, 117, B04204, doi:10.1029/2011JB008968.
 !
 !      Although this program has been used by the USGS, no warranty, expressed or
 !      implied, is made by the USGS or the United States Government as to the accuracy
@@ -32,17 +32,21 @@
 
       program hours_since_1900
 
-      ! This module requires Fortran 2003 or later
-      use iso_fortran_env, only : &
-         input_unit,output_unit,error_unit
+      ! input iyear,imonth,iday,hours
 
-!     input iyear,imonth,iday,hours
-      
-!     program that calculates the number of hours since 1900 of a year, month, day, and hour (UT)      
+      ! program that calculates the number of hours since 1900 of a year, month, day, and hour (UT)
       ! Check against calculator on
       ! http://www.7is7.com/otto/datediff.html
 
+      use, intrinsic :: iso_fortran_env, only : &
+         real32, real64, input_unit,output_unit,error_unit
+
       implicit none
+      !implicit none (type, external)
+
+        ! These single and double precision parameters should be 4 and 8
+      integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
+      integer, parameter :: dp = real64  ! selected_real_kind(15,  307) ! double precision
 
       integer             :: iyear   = 0
       integer             :: imonth  = 0
@@ -60,6 +64,8 @@
 
       INTERFACE
         real(kind=8) function HS_hours_since_baseyear(iyear,imonth,iday,hours,byear,useLeaps)
+          implicit none
+          !implicit none (type, external)
           integer     ,intent(in) :: iyear
           integer     ,intent(in) :: imonth
           integer     ,intent(in) :: iday
@@ -71,43 +77,43 @@
 
 !     TEST READ COMMAND LINE ARGUMENTS
       nargs = command_argument_count()
-      if (nargs.lt.4) then
+      if (nargs < 4) then
         write(error_unit,*) 'error in input to HoursSince1900'
         write(error_unit,*) 'input should be year month day hour'
         write(error_unit,*) 'program stopped'
         stop 1
       else
         call get_command_argument(number=1, value=arg1, length=inlen, status=iostatus)
-        if(iostatus.ne.0)write(error_unit,*)"ERROR: could not read command-line argument (1)"
+        if(iostatus /= 0)write(error_unit,*)"ERROR: could not read command-line argument (1)"
         call get_command_argument(number=2, value=arg2, length=inlen, status=iostatus)
-        if(iostatus.ne.0)write(error_unit,*)"ERROR: could not read command-line argument (2)"
+        if(iostatus /= 0)write(error_unit,*)"ERROR: could not read command-line argument (2)"
         call get_command_argument(number=3, value=arg3, length=inlen, status=iostatus)
-        if(iostatus.ne.0)write(error_unit,*)"ERROR: could not read command-line argument (3)"
+        if(iostatus /= 0)write(error_unit,*)"ERROR: could not read command-line argument (3)"
         call get_command_argument(number=4, value=arg4, length=inlen, status=iostatus)
-        if(iostatus.ne.0)write(error_unit,*)"ERROR: could not read command-line argument (4)"
+        if(iostatus /= 0)write(error_unit,*)"ERROR: could not read command-line argument (4)"
         read(arg1,*,iostat=iostatus,iomsg=iomessage) iyear
-        if(iostatus.ne.0)then
+        if(iostatus /= 0)then
           write(error_unit,*)"ERROR: could not read command-line argument (1)"
           write(error_unit,*)" iyear = ",iyear
           write(error_unit,*)iomessage
           stop 1
         endif
         read(arg2,*,iostat=iostatus,iomsg=iomessage) imonth
-        if(iostatus.ne.0)then
+        if(iostatus /= 0)then
           write(error_unit,*)"ERROR: could not read command-line argument (1)"
           write(error_unit,*)" imonth = ",imonth
           write(error_unit,*)iomessage
           stop 1
         endif
         read(arg3,*,iostat=iostatus,iomsg=iomessage) iday
-        if(iostatus.ne.0)then
+        if(iostatus /= 0)then
           write(error_unit,*)"ERROR: could not read command-line argument (1)"
           write(error_unit,*)" iday = ",iday
           write(error_unit,*)iomessage
           stop 1
         endif
         read(arg4,*,iostat=iostatus,iomsg=iomessage) hours
-        if(iostatus.ne.0)then
+        if(iostatus /= 0)then
           write(error_unit,*)"ERROR: could not read command-line argument (1)"
           write(error_unit,*)" hours = ",hours
           write(error_unit,*)iomessage
