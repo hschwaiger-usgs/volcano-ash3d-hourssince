@@ -16,11 +16,11 @@
 
       integer            :: i
 
-      integer            :: iyear  = 0
-      integer            :: imonth = 0
-      integer            :: iday   = 0
-      integer            :: idoy   = 0
-      real(kind=dp)      :: hours  = 0.0_dp
+      integer            :: iyear    = 0
+      integer            :: imonth   = 0
+      integer            :: iday     = 0
+      integer            :: idoy     = 0
+      real(kind=dp)      :: hours    = 0.0_dp
       integer            :: byear    = 1000
       logical            :: useLeaps = .true.
 
@@ -35,24 +35,26 @@
         subroutine HS_Get_YMDH(HoursSince,byear,useLeaps,iyear,imonth,iday,hours,idoy)
           implicit none
           !implicit none (type, external)
-          real(kind=8),intent(in)       :: HoursSince
-          integer     ,intent(in)       :: byear
-          logical     ,intent(in)       :: useLeaps
-          integer     ,intent(out)      :: iyear
-          integer     ,intent(out)      :: imonth
-          integer     ,intent(out)      :: iday
-          real(kind=8),intent(out)      :: hours
-          integer     ,intent(out)      :: idoy
+          integer       ,parameter        :: dp        = 8 ! double precision
+          real(kind=dp) ,intent(in)       :: HoursSince
+          integer       ,intent(in)       :: byear
+          logical       ,intent(in)       :: useLeaps
+          integer       ,intent(out)      :: iyear
+          integer       ,intent(out)      :: imonth
+          integer       ,intent(out)      :: iday
+          real(kind=dp) ,intent(out)      :: hours
+          integer       ,intent(out)      :: idoy
         end subroutine HS_Get_YMDH
         real(kind=8) function HS_hours_since_baseyear(iyear,imonth,iday,hours,byear,useLeaps)
           implicit none
           !implicit none (type, external)
-          integer     ,intent(in)       :: iyear
-          integer     ,intent(in)       :: imonth
-          integer     ,intent(in)       :: iday
-          real(kind=8),intent(in)       :: hours
-          integer     ,intent(in)       :: byear
-          logical     ,intent(in)       :: useLeaps
+          integer       ,parameter        :: dp        = 8 ! double precision
+          integer       ,intent(in)       :: iyear
+          integer       ,intent(in)       :: imonth
+          integer       ,intent(in)       :: iday
+          real(kind=dp) ,intent(in)       :: hours
+          integer       ,intent(in)       :: byear
+          logical       ,intent(in)       :: useLeaps
         end function HS_hours_since_baseyear
       END INTERFACE
 

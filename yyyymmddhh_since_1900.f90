@@ -43,7 +43,7 @@
       !implicit none (type, external)
 
         ! These single and double precision parameters should be 4 and 8
-      integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
+      !integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
       integer, parameter :: dp = real64  ! selected_real_kind(15,  307) ! double precision
 
       character(len=18)    :: string1
@@ -69,14 +69,15 @@
         subroutine HS_Get_YMDH(HoursSince,byear,useLeaps,iyear,imonth,iday,hours,idoy)
           implicit none
           !implicit none  (type, external)
-          real(kind=8),intent(in)       :: HoursSince
-          integer     ,intent(in)       :: byear
-          logical     ,intent(in)       :: useLeaps
-          integer     ,intent(out)      :: iyear
-          integer     ,intent(out)      :: imonth
-          integer     ,intent(out)      :: iday
-          real(kind=8),intent(out)      :: hours
-          integer     ,intent(out)      :: idoy
+          integer            ,parameter   :: dp        = 8 ! double precision
+          real(kind=dp) ,intent(in)       :: HoursSince
+          integer       ,intent(in)       :: byear
+          logical       ,intent(in)       :: useLeaps
+          integer       ,intent(out)      :: iyear
+          integer       ,intent(out)      :: imonth
+          integer       ,intent(out)      :: iday
+          real(kind=dp) ,intent(out)      :: hours
+          integer       ,intent(out)      :: idoy
         end subroutine HS_Get_YMDH
       END INTERFACE
 

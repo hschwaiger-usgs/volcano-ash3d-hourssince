@@ -93,11 +93,11 @@
       use, intrinsic :: iso_fortran_env, only : &
          real32,real64,error_unit
 
-      implicit none 
+      implicit none
       !implicit none (type, external)
 
         ! These single and double precision parameters should be 4 and 8
-      integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
+      !integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
       integer, parameter :: dp = real64  ! selected_real_kind(15,  307) ! double precision
 
       integer      ,intent(in) :: iyear
@@ -217,11 +217,11 @@
       use, intrinsic :: iso_fortran_env, only : &
          real32,real64,error_unit
 
-      implicit none 
+      implicit none
       !implicit none (type, external)
 
         ! These single and double precision parameters should be 4 and 8
-      integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
+      !integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
       integer, parameter :: dp = real64  ! selected_real_kind(15,  307) ! double precision
 
       real(kind=dp),intent(in)       :: HoursSince
@@ -416,11 +416,11 @@
       use, intrinsic :: iso_fortran_env, only : &
          real32,real64,error_unit
 
-      implicit none 
+      implicit none
       !implicit none (type, external)
 
         ! These single and double precision parameters should be 4 and 8
-      integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
+      !integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
       integer, parameter :: dp = real64  ! selected_real_kind(15,  307) ! double precision
 
       real(kind=dp)     ,intent(in) :: HoursSince
@@ -436,14 +436,15 @@
         subroutine HS_Get_YMDH(HoursSince,byear,useLeaps,iyear,imonth,iday,hours,idoy)
           implicit none
           !implicit none (type, external)
-          real(kind=8),intent(in)       :: HoursSince
-          integer     ,intent(in)       :: byear
-          logical     ,intent(in)       :: useLeaps
-          integer     ,intent(out)      :: iyear
-          integer     ,intent(out)      :: imonth
-          integer     ,intent(out)      :: iday
-          real(kind=8),intent(out)      :: hours
-          integer     ,intent(out)      :: idoy
+          integer       ,parameter        :: dp        = 8 ! double precision
+          real(kind=dp) ,intent(in)       :: HoursSince
+          integer       ,intent(in)       :: byear
+          logical       ,intent(in)       :: useLeaps
+          integer       ,intent(out)      :: iyear
+          integer       ,intent(out)      :: imonth
+          integer       ,intent(out)      :: iday
+          real(kind=dp) ,intent(out)      :: hours
+          integer       ,intent(out)      :: idoy
         end subroutine HS_Get_YMDH
       END INTERFACE
 
@@ -488,11 +489,11 @@
       use, intrinsic :: iso_fortran_env, only : &
          real32,real64,error_unit
 
-      implicit none 
+      implicit none
       !implicit none (type, external)
 
         ! These single and double precision parameters should be 4 and 8
-      integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
+      !integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
       integer, parameter :: dp = real64  ! selected_real_kind(15,  307) ! double precision
 
       real(kind=dp)  ,intent(in) ::  HoursSince
@@ -510,14 +511,15 @@
         subroutine HS_Get_YMDH(HoursSince,byear,useLeaps,iyear,imonth,iday,hours,idoy)
           implicit none
           !implicit none (type, external)
-          real(kind=8),intent(in)       :: HoursSince
-          integer     ,intent(in)       :: byear
-          logical     ,intent(in)       :: useLeaps
-          integer     ,intent(out)      :: iyear
-          integer     ,intent(out)      :: imonth
-          integer     ,intent(out)      :: iday
-          real(kind=8),intent(out)      :: hours
-          integer     ,intent(out)      :: idoy
+          integer       ,parameter        :: dp        = 8 ! double precision
+          real(kind=dp) ,intent(in)       :: HoursSince
+          integer       ,intent(in)       :: byear
+          logical       ,intent(in)       :: useLeaps
+          integer       ,intent(out)      :: iyear
+          integer       ,intent(out)      :: imonth
+          integer       ,intent(out)      :: iday
+          real(kind=dp) ,intent(out)      :: hours
+          integer       ,intent(out)      :: idoy
         end subroutine HS_Get_YMDH
       END INTERFACE
 
@@ -561,11 +563,11 @@
       use, intrinsic :: iso_fortran_env, only : &
          real32,real64,error_unit
 
-      implicit none 
+      implicit none
       !implicit none (type, external)
 
         ! These single and double precision parameters should be 4 and 8
-      integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
+      !integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
       integer, parameter :: dp = real64  ! selected_real_kind(15,  307) ! double precision
 
       real(kind=dp),intent(in)    ::  HoursSince
@@ -583,14 +585,15 @@
         subroutine HS_Get_YMDH(HoursSince,byear,useLeaps,iyear,imonth,iday,hours,idoy)
           implicit none
           !implicit none (type, external)
-          real(kind=8),intent(in)       :: HoursSince
-          integer     ,intent(in)       :: byear
-          logical     ,intent(in)       :: useLeaps
-          integer     ,intent(out)      :: iyear
-          integer     ,intent(out)      :: imonth
-          integer     ,intent(out)      :: iday
-          real(kind=8),intent(out)      :: hours
-          integer     ,intent(out)      :: idoy
+          integer       ,parameter        :: dp        = 8 ! double precision
+          real(kind=dp) ,intent(in)       :: HoursSince
+          integer       ,intent(in)       :: byear
+          logical       ,intent(in)       :: useLeaps
+          integer       ,intent(out)      :: iyear
+          integer       ,intent(out)      :: imonth
+          integer       ,intent(out)      :: iday
+          real(kind=dp) ,intent(out)      :: hours
+          integer       ,intent(out)      :: idoy
         end subroutine HS_Get_YMDH
       END INTERFACE
 
@@ -643,11 +646,11 @@
       use, intrinsic :: iso_fortran_env, only : &
          real32,real64,error_unit
 
-      implicit none 
+      implicit none
       !implicit none (type, external)
 
         ! These single and double precision parameters should be 4 and 8
-      integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
+      !integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
       integer, parameter :: dp = real64  ! selected_real_kind(15,  307) ! double precision
 
       real(kind=dp),intent(in) :: HoursSince
@@ -661,14 +664,15 @@
         subroutine HS_Get_YMDH(HoursSince,byear,useLeaps,iyear,imonth,iday,hours,idoy)
           implicit none
           !implicit none (type, external)
-          real(kind=8),intent(in)       :: HoursSince
-          integer     ,intent(in)       :: byear
-          logical     ,intent(in)       :: useLeaps
-          integer     ,intent(out)      :: iyear
-          integer     ,intent(out)      :: imonth
-          integer     ,intent(out)      :: iday
-          real(kind=8),intent(out)      :: hours
-          integer     ,intent(out)      :: idoy
+          integer       ,parameter        :: dp        = 8 ! double precision
+          real(kind=dp) ,intent(in)       :: HoursSince
+          integer       ,intent(in)       :: byear
+          logical       ,intent(in)       :: useLeaps
+          integer       ,intent(out)      :: iyear
+          integer       ,intent(out)      :: imonth
+          integer       ,intent(out)      :: iday
+          real(kind=dp) ,intent(out)      :: hours
+          integer       ,intent(out)      :: idoy
         end subroutine HS_Get_YMDH
       END INTERFACE
 
@@ -705,11 +709,11 @@
       use, intrinsic :: iso_fortran_env, only : &
          real32,real64,error_unit
 
-      implicit none 
+      implicit none
       !implicit none (type, external)
 
         ! These single and double precision parameters should be 4 and 8
-      integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
+      !integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
       integer, parameter :: dp = real64  ! selected_real_kind(15,  307) ! double precision
 
       real(kind=dp),intent(in) :: HoursSince
@@ -723,14 +727,15 @@
         subroutine HS_Get_YMDH(HoursSince,byear,useLeaps,iyear,imonth,iday,hours,idoy)
           implicit none
           !implicit none (type, external)
-          real(kind=8),intent(in)       :: HoursSince
-          integer     ,intent(in)       :: byear
-          logical     ,intent(in)       :: useLeaps
-          integer     ,intent(out)      :: iyear
-          integer     ,intent(out)      :: imonth
-          integer     ,intent(out)      :: iday
-          real(kind=8),intent(out)      :: hours
-          integer     ,intent(out)      :: idoy
+          integer       ,parameter        :: dp        = 8 ! double precision
+          real(kind=dp) ,intent(in)       :: HoursSince
+          integer       ,intent(in)       :: byear
+          logical       ,intent(in)       :: useLeaps
+          integer       ,intent(out)      :: iyear
+          integer       ,intent(out)      :: imonth
+          integer       ,intent(out)      :: iday
+          real(kind=dp) ,intent(out)      :: hours
+          integer       ,intent(out)      :: idoy
         end subroutine HS_Get_YMDH
       END INTERFACE
 
@@ -767,11 +772,11 @@
       use , intrinsic ::iso_fortran_env, only : &
          real32,real64,error_unit
 
-      implicit none 
+      implicit none
       !implicit none (type, external)
 
         ! These single and double precision parameters should be 4 and 8
-      integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
+      !integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
       integer, parameter :: dp = real64  ! selected_real_kind(15,  307) ! double precision
 
       real(kind=dp),intent(in) :: HoursSince
@@ -785,14 +790,15 @@
         subroutine HS_Get_YMDH(HoursSince,byear,useLeaps,iyear,imonth,iday,hours,idoy)
           implicit none
           !implicit none (type, external)
-          real(kind=8),intent(in)       :: HoursSince
-          integer     ,intent(in)       :: byear
-          logical     ,intent(in)       :: useLeaps
-          integer     ,intent(out)      :: iyear
-          integer     ,intent(out)      :: imonth
-          integer     ,intent(out)      :: iday
-          real(kind=8),intent(out)      :: hours
-          integer     ,intent(out)      :: idoy
+          integer       ,parameter        :: dp        = 8 ! double precision
+          real(kind=dp) ,intent(in)       :: HoursSince
+          integer       ,intent(in)       :: byear
+          logical       ,intent(in)       :: useLeaps
+          integer       ,intent(out)      :: iyear
+          integer       ,intent(out)      :: imonth
+          integer       ,intent(out)      :: iday
+          real(kind=dp) ,intent(out)      :: hours
+          integer       ,intent(out)      :: idoy
         end subroutine HS_Get_YMDH
       END INTERFACE
 
@@ -829,11 +835,11 @@
       use, intrinsic :: iso_fortran_env, only : &
          real32,real64,error_unit
 
-      implicit none 
+      implicit none
       !implicit none (type, external)
 
         ! These single and double precision parameters should be 4 and 8
-      integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
+      !integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
       integer, parameter :: dp = real64  ! selected_real_kind(15,  307) ! double precision
 
       real(kind=dp),intent(in) :: HoursSince
@@ -847,14 +853,15 @@
         subroutine HS_Get_YMDH(HoursSince,byear,useLeaps,iyear,imonth,iday,hours,idoy)
           implicit none
           !implicit none (type, external)
-          real(kind=8),intent(in)       :: HoursSince
-          integer     ,intent(in)       :: byear
-          logical     ,intent(in)       :: useLeaps
-          integer     ,intent(out)      :: iyear
-          integer     ,intent(out)      :: imonth
-          integer     ,intent(out)      :: iday
-          real(kind=8),intent(out)      :: hours
-          integer     ,intent(out)      :: idoy
+          integer       ,parameter        :: dp        = 8 ! double precision
+          real(kind=dp) ,intent(in)       :: HoursSince
+          integer       ,intent(in)       :: byear
+          logical       ,intent(in)       :: useLeaps
+          integer       ,intent(out)      :: iyear
+          integer       ,intent(out)      :: imonth
+          integer       ,intent(out)      :: iday
+          real(kind=dp) ,intent(out)      :: hours
+          integer       ,intent(out)      :: idoy
         end subroutine HS_Get_YMDH
       END INTERFACE
 
@@ -891,11 +898,11 @@
       use, intrinsic :: iso_fortran_env, only : &
          real32,real64,error_unit
 
-      implicit none 
+      implicit none
       !implicit none (type, external)
 
         ! These single and double precision parameters should be 4 and 8
-      integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
+      !integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
       integer, parameter :: dp = real64  ! selected_real_kind(15,  307) ! double precision
 
       real(kind=dp),intent(in) :: HoursSince
@@ -909,14 +916,15 @@
         subroutine HS_Get_YMDH(HoursSince,byear,useLeaps,iyear,imonth,iday,hours,idoy)
           implicit none
           !implicit none (type, external)
-          real(kind=8),intent(in)       :: HoursSince
-          integer     ,intent(in)       :: byear
-          logical     ,intent(in)       :: useLeaps
-          integer     ,intent(out)      :: iyear
-          integer     ,intent(out)      :: imonth
-          integer     ,intent(out)      :: iday
-          real(kind=8),intent(out)      :: hours
-          integer     ,intent(out)      :: idoy
+          integer       ,parameter        :: dp        = 8 ! double precision
+          real(kind=dp) ,intent(in)       :: HoursSince
+          integer       ,intent(in)       :: byear
+          logical       ,intent(in)       :: useLeaps
+          integer       ,intent(out)      :: iyear
+          integer       ,intent(out)      :: imonth
+          integer       ,intent(out)      :: iday
+          real(kind=dp) ,intent(out)      :: hours
+          integer       ,intent(out)      :: idoy
         end subroutine HS_Get_YMDH
       END INTERFACE
 

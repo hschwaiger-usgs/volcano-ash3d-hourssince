@@ -45,7 +45,7 @@
       !implicit none (type, external)
 
         ! These single and double precision parameters should be 4 and 8
-      integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
+      !integer, parameter :: sp = real32  ! selected_real_kind( 6,   37) ! single precision
       integer, parameter :: dp = real64  ! selected_real_kind(15,  307) ! double precision
 
       integer             :: iyear   = 0
@@ -56,8 +56,8 @@
       integer             :: iostatus
       character(len=120)  :: iomessage = ""
       integer             :: inlen
-      real(kind=8)        :: hours
-      real(kind=8)        :: hours_out
+      real(kind=dp)       :: hours
+      real(kind=dp)       :: hours_out
 
       integer :: byear    = 1900
       logical :: useLeaps = .true.
@@ -66,12 +66,13 @@
         real(kind=8) function HS_hours_since_baseyear(iyear,imonth,iday,hours,byear,useLeaps)
           implicit none
           !implicit none (type, external)
-          integer     ,intent(in) :: iyear
-          integer     ,intent(in) :: imonth
-          integer     ,intent(in) :: iday
-          real(kind=8),intent(in) :: hours
-          integer     ,intent(in) :: byear
-          logical     ,intent(in) :: useLeaps
+          integer       ,parameter        :: dp        = 8 ! double precision
+          integer       ,intent(in) :: iyear
+          integer       ,intent(in) :: imonth
+          integer       ,intent(in) :: iday
+          real(kind=dp) ,intent(in) :: hours
+          integer       ,intent(in) :: byear
+          logical       ,intent(in) :: useLeaps
         end function HS_hours_since_baseyear
       END INTERFACE
 
